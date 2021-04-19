@@ -329,9 +329,12 @@ class _DatePickerState extends State<_DataPickerComponent> {
       case 'zh':
         return '确定';
         break;
+      case 'hu':
+        return 'Kész';
+        break;
 
       default:
-        return '';
+        return 'Done';
         break;
     }
   }
@@ -352,8 +355,12 @@ class _DatePickerState extends State<_DataPickerComponent> {
         return '取消';
         break;
 
+      case 'hu':
+        return 'Mégsem';
+        break;
+
       default:
-        return '';
+        return 'Cancel';
         break;
     }
   }
