@@ -23,22 +23,25 @@ class DataPicker {
       suffix: '',
       title: '',
       locale: 'zh',
-      ThemeData theme}) {
+      ThemeData theme,
+      Color cancelColor,
+      Color doneColor}) {
     Navigator.push(
         context,
         new _DatePickerRoute(
-          showTitleActions: showTitleActions,
-          initialData: selectedIndex,
-          datas: datas,
-          onChanged: onChanged,
-          onConfirm: onConfirm,
-          locale: locale,
-          suffix: suffix,
-          title: title,
-          theme: theme ?? Theme.of(context),
-          barrierLabel:
-              MaterialLocalizations.of(context).modalBarrierDismissLabel,
-        ));
+            showTitleActions: showTitleActions,
+            initialData: selectedIndex,
+            datas: datas,
+            onChanged: onChanged,
+            onConfirm: onConfirm,
+            locale: locale,
+            suffix: suffix,
+            title: title,
+            theme: theme ?? Theme.of(context),
+            barrierLabel:
+                MaterialLocalizations.of(context).modalBarrierDismissLabel,
+            cancelColor: cancelColor,
+            doneColor: doneColor));
   }
 }
 
