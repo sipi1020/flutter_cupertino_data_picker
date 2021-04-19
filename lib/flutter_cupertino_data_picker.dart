@@ -1,5 +1,3 @@
-import 'dart:html';
-
 ///
 /// author: Simon Chen
 /// since: 2018/09/13
