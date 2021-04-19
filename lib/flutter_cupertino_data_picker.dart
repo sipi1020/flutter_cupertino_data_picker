@@ -54,6 +54,8 @@ class _DatePickerRoute<T> extends PopupRoute<T> {
     this.locale,
     this.suffix,
     this.title,
+    this.cancelColor,
+    this.doneColor,
     RouteSettings settings,
   }) : super(settings: settings);
 
@@ -66,6 +68,8 @@ class _DatePickerRoute<T> extends PopupRoute<T> {
   final String locale;
   final String suffix;
   final String title;
+  final Color cancelColor;
+  final Color doneColor;
 
   @override
   Duration get transitionDuration => const Duration(milliseconds: 200);
@@ -102,6 +106,8 @@ class _DatePickerRoute<T> extends PopupRoute<T> {
         locale: locale,
         suffix: suffix,
         title: title,
+        cancelColor: cancelColor,
+        doneColor: doneColor,
         route: this,
       ),
     );
@@ -113,16 +119,17 @@ class _DatePickerRoute<T> extends PopupRoute<T> {
 }
 
 class _DataPickerComponent extends StatefulWidget {
-  _DataPickerComponent({
-    Key key,
-    @required this.route,
-    this.initialData: 0,
-    this.datas,
-    this.onChanged,
-    this.locale,
-    this.suffix,
-    this.title,
-  });
+  _DataPickerComponent(
+      {Key key,
+      @required this.route,
+      this.initialData: 0,
+      this.datas,
+      this.onChanged,
+      this.locale,
+      this.suffix,
+      this.title,
+      this.cancelColor,
+      this.doneColor});
 
   final DateChangedCallback onChanged;
   final int initialData;
@@ -133,6 +140,8 @@ class _DataPickerComponent extends StatefulWidget {
   final String locale;
   final String suffix;
   final String title;
+  final Color cancelColor;
+  final Color doneColor;
 
   @override
   State<StatefulWidget> createState() => _DatePickerState(this.initialData);
@@ -260,7 +269,8 @@ class _DatePickerState extends State<_DataPickerComponent> {
               child: Text(
                 '$cancel',
                 style: TextStyle(
-                  color: Theme.of(context).unselectedWidgetColor,
+                  color: widget.cancelColor ??
+                      Theme.of(context).unselectedWidgetColor,
                   fontSize: 16.0,
                 ),
               ),
@@ -284,7 +294,7 @@ class _DatePickerState extends State<_DataPickerComponent> {
               child: Text(
                 '$done',
                 style: TextStyle(
-                  color: Theme.of(context).primaryColor,
+                  color: widget.doneColor ?? Theme.of(context).primaryColor,
                   fontSize: 16.0,
                 ),
               ),
