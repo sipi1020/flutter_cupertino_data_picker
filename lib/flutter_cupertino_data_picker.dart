@@ -1,3 +1,5 @@
+import 'dart:html';
+
 ///
 /// author: Simon Chen
 /// since: 2018/09/13
@@ -14,17 +16,16 @@ const double _kDatePickerItemHeight = 36.0;
 const double _kDatePickerFontSize = 18.0;
 
 class DataPicker {
-  static void showDatePicker(
-    BuildContext context, {
-    bool showTitleActions: true,
-    @required List<dynamic> datas,
-    int selectedIndex: 0,
-    DateChangedCallback onChanged,
-    DateChangedCallback onConfirm,
-    suffix: '',
-    title: '',
-    locale: 'zh',
-  }) {
+  static void showDatePicker(BuildContext context,
+      {bool showTitleActions: true,
+      @required List<dynamic> datas,
+      int selectedIndex: 0,
+      DateChangedCallback onChanged,
+      DateChangedCallback onConfirm,
+      suffix: '',
+      title: '',
+      locale: 'zh',
+      ThemeData theme}) {
     Navigator.push(
         context,
         new _DatePickerRoute(
@@ -36,7 +37,7 @@ class DataPicker {
           locale: locale,
           suffix: suffix,
           title: title,
-          theme: Theme.of(context),
+          theme: theme ?? Theme.of(context),
           barrierLabel:
               MaterialLocalizations.of(context).modalBarrierDismissLabel,
         ));
